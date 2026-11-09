@@ -1,0 +1,340 @@
+{
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "updatedAt",
+    "person",
+    "projects",
+    "skills",
+    "learningGoals",
+    "notYet"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "updatedAt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "person": {
+      "type": "object",
+      "required": [
+        "name",
+        "summary",
+        "targetRoles",
+        "interests",
+        "resumeUrl",
+        "contactUrl"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "targetRoles": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "interests": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "resumeUrl": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contactUrl": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "summary",
+          "repositoryUrl",
+          "demoUrl",
+          "deliveryStatus",
+          "completedScope",
+          "role",
+          "contributions",
+          "technologiesUsedPersonally",
+          "annotations",
+          "evidence",
+          "metrics",
+          "limitations",
+          "assistance"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "summary": {
+            "type": "string",
+            "minLength": 1
+          },
+          "repositoryUrl": {
+            "type": "string",
+            "minLength": 1
+          },
+          "demoUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "deliveryStatus": {
+            "enum": [
+              "completed_prototype",
+              "deployed",
+              "partially_deployed"
+            ]
+          },
+          "completedScope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "contributions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "technologiesUsedPersonally": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "annotations": {
+            "type": "object",
+            "required": [
+              "whatIsThis",
+              "whyThisChoice",
+              "whatBreaks",
+              "whatDidILearn"
+            ],
+            "properties": {
+              "whatIsThis": {
+                "type": "string",
+                "minLength": 1
+              },
+              "whyThisChoice": {
+                "type": "string",
+                "minLength": 1
+              },
+              "whatBreaks": {
+                "type": "string",
+                "minLength": 1
+              },
+              "whatDidILearn": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": false
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "claim",
+                "sourceType",
+                "reference"
+              ],
+              "properties": {
+                "claim": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sourceType": {
+                  "enum": [
+                    "repository",
+                    "demo",
+                    "benchmark",
+                    "owner_statement"
+                  ]
+                },
+                "reference": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "metrics": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "name",
+                "value",
+                "unit",
+                "method",
+                "environment",
+                "evidenceReference"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "value": {
+                  "type": "number"
+                },
+                "unit": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "method": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "environment": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "evidenceReference": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "assistance": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "projectIds",
+          "evidenceSummary"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "projectIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "evidenceSummary": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "learningGoals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "topic",
+          "reason",
+          "currentActivity"
+        ],
+        "properties": {
+          "topic": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "currentActivity": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "notYet": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "topic",
+          "reasonDeferred",
+          "revisitWhen"
+        ],
+        "properties": {
+          "topic": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reasonDeferred": {
+            "type": "string",
+            "minLength": 1
+          },
+          "revisitWhen": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

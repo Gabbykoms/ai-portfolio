@@ -1,0 +1,187 @@
+{
+  "schemaVersion": "1.0",
+  "updatedAt": "2026-11-09",
+  "person": {
+    "name": "Gabriel Koomson",
+    "summary": "Building systems, exploring performance, and applying AI to useful software.",
+    "targetRoles": [
+      "Full-time software engineer"
+    ],
+    "interests": [
+      "Low-level systems",
+      "Performance optimization",
+      "AI"
+    ],
+    "resumeUrl": null,
+    "contactUrl": null
+  },
+  "projects": [
+    {
+      "id": "tick-to-trade",
+      "name": "Tick-to-trade",
+      "summary": "A C++20 matching venue and market participant, with order books, risk checks, TCP transport, and differential tests.",
+      "repositoryUrl": "https://github.com/Gabbykoms/Tick-to-trade",
+      "demoUrl": null,
+      "deliveryStatus": "completed_prototype",
+      "completedScope": "A C++20 matching venue and market participant, with order books, risk checks, TCP transport, and differential tests.",
+      "role": "Individual project developer",
+      "contributions": [
+        "Built this individual project with AI assistance."
+      ],
+      "technologiesUsedPersonally": [
+        "C++20"
+      ],
+      "annotations": {
+        "whatIsThis": "A C++20 matching venue and market participant, with order books, risk checks, TCP transport, and differential tests.",
+        "whyThisChoice": "Supports Gabriel\u2019s interests in systems and performance.",
+        "whatBreaks": "No real-money execution.",
+        "whatDidILearn": "Learning C++ and trading-system design."
+      },
+      "evidence": [
+        {
+          "claim": "Implemented project scope and limitations",
+          "sourceType": "repository",
+          "reference": "https://github.com/Gabbykoms/Tick-to-trade"
+        },
+        {
+          "claim": "Personal contribution and assistance description",
+          "sourceType": "owner_statement",
+          "reference": "Gabriel\u2019s portfolio interview, November 2026"
+        }
+      ],
+      "metrics": [],
+      "limitations": [
+        "No real-money execution.",
+        "Alpaca quote feed is separate from strategy and order execution.",
+        "README benchmark tables contain placeholders; local figures have not been independently reproduced."
+      ],
+      "assistance": "Individual project with AI assistance, confirmed by Gabriel."
+    },
+    {
+      "id": "bantamgo",
+      "name": "BantamGo",
+      "summary": "A team-built campus shuttle application with student, driver, and admin interfaces, tracking, and an AI assistant.",
+      "repositoryUrl": "https://github.com/Trinity-Shuttle-Service/Ctrl-Alt-Elite",
+      "demoUrl": null,
+      "deliveryStatus": "partially_deployed",
+      "completedScope": "A team-built campus shuttle application with student, driver, and admin interfaces, tracking, and an AI assistant.",
+      "role": "Project lead",
+      "contributions": [
+        "Led the team (owner statement).",
+        "Contributed Docker containerization, Kubernetes configuration, CI/CD workflows, and ride API integration (repository history).",
+        "Reports architecting the microservices application and implementing RAG chat and GPS/message-queue integration."
+      ],
+      "technologiesUsedPersonally": [
+        "Docker",
+        "Kubernetes",
+        "GitHub Actions",
+        "Harbor",
+        "FastAPI",
+        "Redis",
+        "RabbitMQ",
+        "LangChain"
+      ],
+      "annotations": {
+        "whatIsThis": "A team-built campus shuttle application with student, driver, and admin interfaces, tracking, and an AI assistant.",
+        "whyThisChoice": "Addresses campus shuttle coordination through a team-built application.",
+        "whatBreaks": "Repository documents DigitalOcean; Gabriel reports GKE deployment. Deployment versions are not reconciled.",
+        "whatDidILearn": "Worked on containerization, deployment, and service integration."
+      },
+      "evidence": [
+        {
+          "claim": "Implemented project scope and limitations",
+          "sourceType": "repository",
+          "reference": "https://github.com/Trinity-Shuttle-Service/Ctrl-Alt-Elite"
+        },
+        {
+          "claim": "Personal contribution and assistance description",
+          "sourceType": "owner_statement",
+          "reference": "Gabriel\u2019s portfolio interview, November 2026"
+        }
+      ],
+      "metrics": [
+        {
+          "name": "Intended student audience",
+          "value": 2000,
+          "unit": "students (2000+)",
+          "method": "Owner-reported r\u00e9sum\u00e9 result; measurement method not supplied.",
+          "environment": "Not supplied",
+          "evidenceReference": "Gabriel\u2019s portfolio interview, November 2026"
+        },
+        {
+          "name": "Usage increase",
+          "value": 27,
+          "unit": "percent",
+          "method": "Owner-reported r\u00e9sum\u00e9 result; measurement method not supplied.",
+          "environment": "Not supplied",
+          "evidenceReference": "Gabriel\u2019s portfolio interview, November 2026"
+        },
+        {
+          "name": "Uptime",
+          "value": 99,
+          "unit": "percent",
+          "method": "Owner-reported r\u00e9sum\u00e9 result; measurement method not supplied.",
+          "environment": "Not supplied",
+          "evidenceReference": "Gabriel\u2019s portfolio interview, November 2026"
+        },
+        {
+          "name": "RAG latency reduction",
+          "value": 65,
+          "unit": "percent",
+          "method": "Owner-reported r\u00e9sum\u00e9 result; measurement method not supplied.",
+          "environment": "Not supplied",
+          "evidenceReference": "Gabriel\u2019s portfolio interview, November 2026"
+        },
+        {
+          "name": "Location-update throughput",
+          "value": 1000,
+          "unit": "updates/second (1000+)",
+          "method": "Owner-reported r\u00e9sum\u00e9 result; measurement method not supplied.",
+          "environment": "Not supplied",
+          "evidenceReference": "Gabriel\u2019s portfolio interview, November 2026"
+        }
+      ],
+      "limitations": [
+        "Repository documents DigitalOcean; Gabriel reports GKE deployment. Deployment versions are not reconciled.",
+        "README reports a map-marker bug and RabbitMQ not deployed; Gabriel reports RabbitMQ throughput from his work.",
+        "Specific Campus Safety usage remains unconfirmed."
+      ],
+      "assistance": "Team project; README discloses Copilot, Gemini, Claude and ChatGPT assistance."
+    }
+  ],
+  "skills": [
+    {
+      "name": "Docker",
+      "projectIds": [
+        "bantamgo"
+      ],
+      "evidenceSummary": "Gabriel-authored containerization commits."
+    },
+    {
+      "name": "Kubernetes",
+      "projectIds": [
+        "bantamgo"
+      ],
+      "evidenceSummary": "Gabriel-authored deployment configuration commits."
+    }
+  ],
+  "learningGoals": [
+    {
+      "topic": "C++ and trading systems",
+      "reason": "Explore systems design and performance.",
+      "currentActivity": "Building Tick-to-trade with AI assistance."
+    }
+  ],
+  "notYet": [
+    {
+      "topic": "Data pipelines",
+      "reasonDeferred": "Has not needed them yet.",
+      "revisitWhen": null
+    },
+    {
+      "topic": "Image generation tools",
+      "reasonDeferred": "Has not needed them yet.",
+      "revisitWhen": null
+    }
+  ]
+}

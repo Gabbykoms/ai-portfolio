@@ -145,3 +145,38 @@ The finished site must also have working résumé/contact links, valid profile d
 - **December 14:** final repository, `portfolio-final` tag, deployed URL, and complete artifact chain.
 
 Maintain tests, reviewed pull requests, `ANNOTATION.md`, and current `CLAUDE.md` as implementation proceeds. The specification is not evidence that implementation, deployment, or testing has already occurred.
+
+## Week 7: spoken interface
+
+Working implementation specification based on Gabriel's authorization to start; document review remains pending.
+
+### Components and dependencies
+
+Keep TypeScript/Next.js for the portfolio and shared server-side answer function. Use Python for `voice/` to follow the course OpenRouter SDK request contracts and keep the audio evaluation scripts independently runnable. `openrouter` is the planned Python dependency for transcription, speech, and usage lookup; validate its current API before installation. Python standard-library `unittest` supplies the initial no-key tests; `pytest` and `ruff` are planned for course-compatible test execution and linting. Next.js, React, React DOM, and TypeScript support the existing web architecture decision; pin versions when scaffolding.
+
+Transcriber: course default `openai/whisper-large-v3-turbo`, comparison `elevenlabs/scribe-v2`. Record transcript, audio seconds, cost, and elapsed time. Speaker: course default `microsoft/mai-voice-2.1-flash`, voice `en-US-Harper:MAI-Voice-2.1-Flash`; comparison `elevenlabs/eleven-v4-turbo`, voice `george`. Record characters, bytes, elapsed time, and estimated or actual cost distinctly. These are course-specified choices whose availability and pricing must be checked before paid evaluation.
+
+### Numbered behaviors
+
+1. Empty or punctuation-only transcripts fail without crashing; for a nonempty reference their WER is 1.
+2. Compute word error rate as token-level Levenshtein distance divided by reference word count. Accept at most 0.15, independently requiring all designated words/phrases. Insertions may yield WER above 1. Empty reference yields 0 for empty output, otherwise 1, but empty output never passes.
+3. Normalize case, whitespace and punctuation; preserve Unicode letters and digits. Required phrases match consecutive whole tokens. Numbers spoken as words do not match digits. Gabriel Koomson, CPSC 415, and clip-specific project names must survive when designated in the human reference.
+4. Never save a non-audio speech response as audio; report a provider error.
+5. Spoken answers contain at most three sentences and no Markdown, use the same approved profile and answer function as typed answers, and refuse unsupported claims.
+6. Browser voice requests contain audio only; API credentials remain on the server. Display transcript, text answer, audio playback and failure states. Keep typed questions usable.
+7. Bound recordings to 30 seconds and 10 MB, reject unsupported types with 415 and oversized bodies with 413, enforce server-side duration validation, timeouts and rate limits before expensive work.
+8. Known fixture transcripts are checked against human-written references. Live recordings have no reference: do not claim a WER score or guaranteed name recognition; expose the transcript and ask for clarification when uncertain.
+9. Return transcription, answer and speech costs separately. Unknown cost remains unknown, never silently zero. Record estimates as estimates.
+10. Attribute Gabriel's BantamGo résumé metrics as owner-reported. Do not describe them as independently measured by this portfolio. Keep unknown contact information and Tick-to-trade benchmark placeholders out of factual answers.
+
+### Typed chatbot implementation contract
+
+Use server-side OpenRouter Chat Completions via native `fetch` (no browser credential). `CHAT_MODEL` selects the provider model explicitly; deployment/evaluation must set it after verifying availability. Missing key/model returns 503. Requests accept one question up to 2,000 characters and 8 KiB JSON, with a 30-second provider timeout and bounded output. Local protection permits 20 requests per minute per server process; production needs a shared limiter. Unknown provider cost is null. No conversation or audio is persisted by the application.
+
+Development dependencies: `@types/node`, `@types/react`, and `@types/react-dom` provide TypeScript declarations; `tsx` executes TypeScript tests using Node's built-in test runner. `ajv` validates the curated JSON profile against its JSON Schema. Runtime dependencies are `next`, `react`, `react-dom`, and `ajv`. Mocked provider tests establish request/error handling, not empirical model grounding; adversarial live evaluation remains required.
+
+### Voice transport decision
+
+The browser converts recordings/files locally to mono 16-bit PCM WAV using Web Audio before upload. `/api/voice` accepts WAV only, allowing Python's standard-library wave reader to verify actual frame count, duration (30 s), channels (1–2), sample rate (8–96 kHz), and completeness before any billed call. Unsupported direct uploads receive 415. This avoids adding a native FFmpeg dependency. Playback uses browser-supported MP3 output. Python is a required server runtime; deploy on a Node/Python host rather than an edge-only host. The server invokes `.venv/bin/python` with JSON on stdin, never a shell command containing user data. SDK retries are disabled and subprocesses have deadlines.
+
+Browser verification uses the development dependency `@playwright/test` to test real page interactions with mocked voice responses, including file-to-WAV upload, visible transcript/answer, playable audio element, and error states. These checks make no provider calls. `httpx` (already required by openrouter) supplies a mock transport for testing the real Python SDK wire serialization.

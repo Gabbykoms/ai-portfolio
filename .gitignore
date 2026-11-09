@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+.claude/settings.local.json
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+.next/
+
+*.tsbuildinfo
+
+playwright-report/
+test-results/
+
+# Local course instructions
+homework-instructions/
