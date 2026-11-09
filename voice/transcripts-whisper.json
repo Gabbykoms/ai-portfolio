@@ -1,0 +1,36 @@
+[
+  {
+    "text": "What jobs are Gabriel Coombson looking for right now?",
+    "empty": false,
+    "model": "openai/whisper-large-v3-turbo",
+    "audio_seconds": 5.699977324263038,
+    "validated_seconds": 5.699977324263038,
+    "cost": 1.8980924489795916e-05,
+    "seconds": 2.745,
+    "file": "clip-01.wav",
+    "check": {
+      "ok": false,
+      "wer": 0.1111111111111111,
+      "missing": [
+        "Gabriel Koomson"
+      ],
+      "empty": false
+    }
+  },
+  {
+    "text": " What was Gabriel's role at Google?",
+    "empty": false,
+    "model": "openai/whisper-large-v3-turbo",
+    "audio_seconds": 7.5,
+    "validated_seconds": 7.499977324263039,
+    "cost": 2.4975e-05,
+    "seconds": 1.862,
+    "file": "clip-02.wav",
+    "check": {
+      "ok": true,
+      "wer": 0.0,
+      "missing": [],
+      "empty": false
+    }
+  }
+]

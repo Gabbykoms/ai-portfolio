@@ -1,0 +1,21 @@
+[
+  {
+    "file": "clip-01.wav",
+    "text": "What jobs are Gabriel Koomson looking for right now?",
+    "must_contain": [
+      "Gabriel Koomson"
+    ],
+    "max_wer": 0.15,
+    "reference_provenance": "Exact question supplied and confirmed by Gabriel after the initial live transcription."
+  },
+  {
+    "file": "clip-02.wav",
+    "text": "What was Gabriel's role at Google?",
+    "must_contain": [
+      "Gabriel's",
+      "Google"
+    ],
+    "max_wer": 0.15,
+    "reference_provenance": "Exact question supplied and confirmed by Gabriel after the initial live transcription."
+  }
+]

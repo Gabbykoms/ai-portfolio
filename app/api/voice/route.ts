@@ -1,10 +1,10 @@
+import { isSameOrigin } from '../../../lib/origin';
 import { ChatError } from '../../../lib/chat';
 import { voiceTurn } from '../../../lib/voice';
 export const runtime='nodejs';
 let windowStart=Date.now();let count=0;let active=0;
 export async function POST(request:Request){
-  const origin=request.headers.get('origin');
-  if(origin && origin!==new URL(request.url).origin)return Response.json({error:'Origin not allowed.'},{status:403});
+  if(!isSameOrigin(request))return Response.json({error:'Origin not allowed.'},{status:403});
   const mime=request.headers.get('content-type')?.split(';')[0];
   if(!['audio/wav','audio/x-wav','audio/wave'].includes(mime ?? ''))return Response.json({error:'Upload a PCM WAV recording.'},{status:415});
   if(Date.now()-windowStart>60000){windowStart=Date.now();count=0;}

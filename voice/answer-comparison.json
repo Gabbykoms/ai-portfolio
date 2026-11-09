@@ -1,0 +1,13 @@
+{
+  "mime": "audio/mpeg",
+  "model": "elevenlabs/eleven-v4-turbo",
+  "voice": "george",
+  "chars": 240,
+  "bytes": 265865,
+  "cost": 0.0096,
+  "cost_is_estimate": false,
+  "generation_id": "gen-tts-1794256684-o0coH2ak3wDsfCAdBWbP",
+  "seconds": 3.897,
+  "cost_source": "OpenRouter generation record",
+  "cost_checked_at": "2026-11-09T20:43:59.599456+00:00"
+}

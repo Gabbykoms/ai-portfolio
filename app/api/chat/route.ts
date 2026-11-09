@@ -1,11 +1,11 @@
+import { isSameOrigin } from '../../../lib/origin';
 import { answerQuestion, ChatError } from '../../../lib/chat';
 export const runtime = 'nodejs';
 let windowStart = Date.now();
 let count = 0;
 export async function POST(request: Request) {
   if (!request.headers.get('content-type')?.includes('application/json')) return Response.json({error:'Send a JSON question.'},{status:415});
-  const origin = request.headers.get('origin');
-  if (origin && origin !== new URL(request.url).origin) return Response.json({error:'Origin not allowed.'},{status:403});
+  if (!isSameOrigin(request)) return Response.json({error:'Origin not allowed.'},{status:403});
   if (Date.now() - windowStart > 60000) { windowStart = Date.now(); count = 0; }
   if (++count > 20) return Response.json({error:'Too many questions. Please wait a minute.'},{status:429,headers:{'Retry-After':'60'}});
   try {

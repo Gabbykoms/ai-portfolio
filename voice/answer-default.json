@@ -1,0 +1,13 @@
+{
+  "mime": "audio/mpeg",
+  "model": "microsoft/mai-voice-2.1-flash",
+  "voice": "en-US-Harper:MAI-Voice-2.1-Flash",
+  "chars": 240,
+  "bytes": 323040,
+  "cost": 0.0036,
+  "cost_is_estimate": false,
+  "generation_id": "gen-tts-1794256647-N11isAelgKqlL2fMfhBS",
+  "seconds": 1.459,
+  "cost_source": "OpenRouter generation record",
+  "cost_checked_at": "2026-11-09T20:43:59.297120+00:00"
+}

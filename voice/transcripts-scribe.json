@@ -1,0 +1,36 @@
+[
+  {
+    "text": "What jobs are Gabriel Clemson looking for right now?",
+    "empty": false,
+    "model": "elevenlabs/scribe-v2",
+    "audio_seconds": 5.7,
+    "validated_seconds": 5.699977324263038,
+    "cost": 0.00034833333333327,
+    "seconds": 1.284,
+    "file": "clip-01.wav",
+    "check": {
+      "ok": false,
+      "wer": 0.1111111111111111,
+      "missing": [
+        "Gabriel Koomson"
+      ],
+      "empty": false
+    }
+  },
+  {
+    "text": "What was Gabriel's role at Google?",
+    "empty": false,
+    "model": "elevenlabs/scribe-v2",
+    "audio_seconds": 7.5,
+    "validated_seconds": 7.499977324263039,
+    "cost": 0.00045833333333325,
+    "seconds": 1.599,
+    "file": "clip-02.wav",
+    "check": {
+      "ok": true,
+      "wer": 0.0,
+      "missing": [],
+      "empty": false
+    }
+  }
+]

@@ -1,0 +1,43 @@
+{
+  "transcript": " What are Gabriel's  professional goals at the moment",
+  "answer": "Gabriel\u2019s current professional goal is to move into a full-time software engineer role. He is also focused on building systems, exploring performance, and applying AI to useful software, with a learning emphasis on C++ and trading systems through Tick-to-trade.",
+  "mime": "audio/mpeg",
+  "costs": {
+    "transcription": 2.53746e-05,
+    "answer": 0.00124125,
+    "speech": null,
+    "total": null
+  },
+  "transcription": {
+    "text": " What are Gabriel's  professional goals at the moment",
+    "empty": false,
+    "model": "openai/whisper-large-v3-turbo",
+    "audio_seconds": 7.62,
+    "validated_seconds": 7.619977324263038,
+    "cost": 2.53746e-05,
+    "seconds": 2.063
+  },
+  "speech": {
+    "mime": "audio/mpeg",
+    "model": "microsoft/mai-voice-2.1-flash",
+    "voice": "en-US-Harper:MAI-Voice-2.1-Flash",
+    "chars": 261,
+    "bytes": 348000,
+    "cost": null,
+    "cost_is_estimate": false,
+    "generation_id": "gen-tts-1794257205-y77QmJM0emYrn53o3qZg",
+    "seconds": 1.184
+  },
+  "savedAt": "2026-11-09T20:46:54.081Z",
+  "cost_estimate": {
+    "speech_usd": 0.003915,
+    "total_usd": 0.0051816246,
+    "speech_characters": 261,
+    "usd_per_million_characters": 15,
+    "source": "https://openrouter.ai/microsoft/mai-voice-2.1-flash",
+    "verified_at": "2026-11-09T20:58:10.548690+00:00",
+    "method": "261 characters \u00d7 $15 / 1,000,000; total adds reported transcription and answer costs.",
+    "actual_speech_cost_available": false,
+    "reason": "Generation lookup returned 404; dashboard entry at 3:37 had a different generation ID."
+  }
+}

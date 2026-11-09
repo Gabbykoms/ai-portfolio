@@ -31,6 +31,27 @@ export default function Voice(){
       rec.start();setRecording(true);timer.current=setTimeout(()=>{if(rec.state==='recording')rec.stop();},29000);
     }catch(e){setError(e instanceof Error?e.message:'Microphone access failed.');}
   }
+  function downloadTurn(){
+    if(!result)return;
+    const {audio,...evidence}=result;
+    const report={...evidence,savedAt:new Date().toISOString()};
+    const url=URL.createObjectURL(new Blob([JSON.stringify(report,null,2)],{type:'application/json'}));
+    const link=document.createElement('a');
+    link.href=url;link.download=`voice-turn-${Date.now()}.json`;
+    document.body.appendChild(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),60000);
+  }
+  async function download(){
+    if(!clip)return;
+    setError('');
+    try{
+      const url=URL.createObjectURL(await wav(clip));
+      const link=document.createElement('a');
+      link.href=url;link.download=`voice-clip-${Date.now()}.wav`;
+      document.body.appendChild(link);link.click();link.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),60000);
+    }catch(e){setError(e instanceof Error?e.message:'Could not save recording.');}
+  }
   async function send(){
     if(!clip || busy)return;setBusy(true);setError('');setResult(null);
     try{const audio=await wav(clip);const response=await fetch('/api/voice',{method:'POST',headers:{'Content-Type':'audio/wav'},body:audio,signal:AbortSignal.timeout(130000)});const data=await response.json();if(!response.ok)throw Error(data.error || 'Voice failed.');setResult(data);}
@@ -38,9 +59,10 @@ export default function Voice(){
   }
   return <section className="voice" aria-labelledby="voice-title"><h3 id="voice-title">Or ask out loud.</h3><p>Record up to 30 seconds. Your audio is sent for transcription only when you choose “Send recording.” Check the transcript—names can be misheard.</p>
     <div className="voice-controls"><button type="button" className="primary" disabled={busy} onClick={()=>recording?recorder.current?.stop():start()}>{recording?'Stop recording':'Record a question'}</button><label className="file-label">Or choose audio<input type="file" accept="audio/*" disabled={busy || recording} onChange={e=>{setClip(e.target.files?.[0] ?? null);setError('');setResult(null);}}/></label></div>
+    {clip && <button type="button" disabled={busy || recording} onClick={download}>Download WAV</button>}
     {clip && <button className="primary" disabled={busy || recording} onClick={send}>{busy?'Transcribing, answering, and speaking…':'Send recording ↗'}</button>}
     <div aria-live="polite">{recording && <p>Recording… stops automatically before 30 seconds.</p>}{clip && !busy && <p>Recording ready to send.</p>}{busy && <p>Preparing your spoken answer…</p>}</div>
     {error && <p role="alert" className="error">{error}</p>}
-    {result && <div className="voice-result"><h4>What I heard</h4><p>{result.transcript}</p><h4>Answer</h4><p>{result.answer}</p><audio controls src={`data:${result.mime};base64,${result.audio}`}>Your browser does not support audio playback.</audio><details><summary>Turn costs</summary>{Object.entries(result.costs).map(([name,value])=><p key={name}>{name}: {typeof value==='number'?`$${value.toFixed(6)}`:'Not yet reported'}</p>)}</details><p>If the transcript is wrong, record again or use the text box above.</p></div>}
+    {result && <div className="voice-result"><button type="button" onClick={downloadTurn}>Download turn results</button><h4>What I heard</h4><p>{result.transcript}</p><h4>Answer</h4><p>{result.answer}</p><audio controls src={`data:${result.mime};base64,${result.audio}`}>Your browser does not support audio playback.</audio><details><summary>Turn costs</summary>{Object.entries(result.costs).map(([name,value])=><p key={name}>{name}: {typeof value==='number'?`$${value.toFixed(6)}`:'Not yet reported'}</p>)}</details><p>If the transcript is wrong, record again or use the text box above.</p></div>}
   </section>;
 }
