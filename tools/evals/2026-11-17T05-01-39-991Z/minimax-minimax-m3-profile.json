@@ -1,0 +1,79 @@
+{
+  "model": "minimax/minimax-m3",
+  "id": "profile",
+  "question": "What full-time roles is Gabriel targeting?",
+  "pass": true,
+  "checks": {
+    "completed": true,
+    "requiredTools": true,
+    "requiredWords": true,
+    "forbiddenWords": true,
+    "claims": true,
+    "evidence": true,
+    "missingIs404": true
+  },
+  "seconds": 1.2485120420000002,
+  "cost": 0.0004584,
+  "steps": 1,
+  "result": {
+    "answer": "Gabriel Koomson is targeting full-time software engineer roles. His profile lists \"Full-time software engineer\" under target roles, with interests in low-level systems, performance optimization, and AI.",
+    "steps": 1,
+    "stoppedBy": "answer",
+    "cost": 0.0004584,
+    "trace": [],
+    "pending": [],
+    "check": {
+      "supported": true,
+      "unsupported": []
+    },
+    "model": "minimax/minimax-m3"
+  },
+  "providerCalls": [
+    {
+      "id": "gen-1794891712-9uprsK8ieFDBDW60dXkC",
+      "object": "chat.completion",
+      "created": 1794891712,
+      "model": "minimax/minimax-m3",
+      "provider": "GMICloud",
+      "system_fingerprint": null,
+      "service_tier": null,
+      "choices": [
+        {
+          "index": 0,
+          "logprobs": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "Gabriel Koomson is targeting full-time software engineer roles. His profile lists \"Full-time software engineer\" under target roles, with interests in low-level systems, performance optimization, and AI.",
+            "refusal": null,
+            "reasoning": null
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 1882,
+        "completion_tokens": 39,
+        "total_tokens": 1921,
+        "cost": 0.0004584,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 160,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0004584,
+          "upstream_inference_prompt_cost": 0.00042096,
+          "upstream_inference_completions_cost": 0.00003744
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      }
+    }
+  ]
+}

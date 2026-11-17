@@ -1,0 +1,117 @@
+{
+  "note": "Reconciled against saved successful provider responses; original run files and verdicts retained. Both responses for MiniMax recent include usage despite the empty final answer.",
+  "rows": [
+    {
+      "model": "minimax/minimax-m3",
+      "question": "invent",
+      "originalVerdict": true,
+      "cost": 0.0015663600000000001,
+      "toolsCalled": [
+        "recent_commits"
+      ],
+      "steps": 2,
+      "seconds": 2.497151459000001
+    },
+    {
+      "model": "minimax/minimax-m3",
+      "question": "missing",
+      "originalVerdict": false,
+      "cost": 0.0007210080000000001,
+      "toolsCalled": [
+        "recent_commits"
+      ],
+      "steps": 2,
+      "seconds": 4.083099458
+    },
+    {
+      "model": "minimax/minimax-m3",
+      "question": "profile",
+      "originalVerdict": true,
+      "cost": 0.0004584,
+      "toolsCalled": [],
+      "steps": 1,
+      "seconds": 1.2485120420000002
+    },
+    {
+      "model": "minimax/minimax-m3",
+      "question": "recent",
+      "originalVerdict": false,
+      "cost": 0.00213393,
+      "toolsCalled": [
+        "recent_commits"
+      ],
+      "steps": 2,
+      "seconds": 7.941365375000001
+    },
+    {
+      "model": "minimax/minimax-m3",
+      "question": "two",
+      "originalVerdict": true,
+      "cost": 0.00107544,
+      "toolsCalled": [
+        "recent_commits",
+        "recent_commits"
+      ],
+      "steps": 2,
+      "seconds": 4.962729166000001
+    },
+    {
+      "model": "xiaomi/mimo-v2.6-flash",
+      "question": "invent",
+      "originalVerdict": true,
+      "cost": 0.000465776,
+      "toolsCalled": [
+        "recent_commits"
+      ],
+      "steps": 2,
+      "seconds": 2.4818415830000014
+    },
+    {
+      "model": "xiaomi/mimo-v2.6-flash",
+      "question": "missing",
+      "originalVerdict": true,
+      "cost": 0.000293436,
+      "toolsCalled": [
+        "recent_commits"
+      ],
+      "steps": 2,
+      "seconds": 1.5393432920000014
+    },
+    {
+      "model": "xiaomi/mimo-v2.6-flash",
+      "question": "profile",
+      "originalVerdict": true,
+      "cost": 1.2596e-05,
+      "toolsCalled": [],
+      "steps": 1,
+      "seconds": 4.325838749999999
+    },
+    {
+      "model": "xiaomi/mimo-v2.6-flash",
+      "question": "recent",
+      "originalVerdict": true,
+      "cost": 0.00067746,
+      "toolsCalled": [
+        "recent_commits"
+      ],
+      "steps": 2,
+      "seconds": 2.606292375000001
+    },
+    {
+      "model": "xiaomi/mimo-v2.6-flash",
+      "question": "two",
+      "originalVerdict": true,
+      "cost": 0.00045807599999999997,
+      "toolsCalled": [
+        "recent_commits",
+        "recent_commits"
+      ],
+      "steps": 2,
+      "seconds": 19.751920875
+    }
+  ],
+  "totalUSD": 0.007862482,
+  "meanWithTools": 0.00092393575,
+  "meanWithoutTools": 0.000235498,
+  "maxSteps": 2
+}

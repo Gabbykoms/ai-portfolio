@@ -1,0 +1,87 @@
+{
+  "model": "xiaomi/mimo-v2.6-flash",
+  "id": "profile",
+  "question": "What full-time roles is Gabriel targeting?",
+  "pass": true,
+  "checks": {
+    "completed": true,
+    "requiredTools": true,
+    "requiredWords": true,
+    "forbiddenWords": true,
+    "claims": true,
+    "evidence": true,
+    "missingIs404": true
+  },
+  "seconds": 4.325838749999999,
+  "cost": 0.000012596,
+  "steps": 1,
+  "result": {
+    "answer": "Gabriel is targeting full-time software engineer roles.",
+    "steps": 1,
+    "stoppedBy": "answer",
+    "cost": 0.000012596,
+    "trace": [],
+    "pending": [],
+    "check": {
+      "supported": true,
+      "unsupported": []
+    },
+    "model": "xiaomi/mimo-v2.6-flash"
+  },
+  "providerCalls": [
+    {
+      "id": "gen-1794891724-Uver811OYKANBAc8JPlk",
+      "object": "chat.completion",
+      "created": 1794891724,
+      "model": "xiaomi/mimo-v2.6-flash",
+      "provider": "Cohere",
+      "system_fingerprint": "vllm-0.33.0rc1.dev320+g335dd77b0-tp2-6caa79d7",
+      "service_tier": null,
+      "choices": [
+        {
+          "index": 0,
+          "logprobs": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "Gabriel is targeting full-time software engineer roles.",
+            "refusal": null,
+            "reasoning": "Answer: full-time software engineer.",
+            "reasoning_details": [
+              {
+                "type": "reasoning.text",
+                "text": "Answer: full-time software engineer.",
+                "format": "unknown",
+                "index": 0
+              }
+            ]
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 1647,
+        "completion_tokens": 20,
+        "total_tokens": 1667,
+        "cost": 0.000012596,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 1632,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.000012596,
+          "upstream_inference_prompt_cost": 0.000006996,
+          "upstream_inference_completions_cost": 0.0000056
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 7,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      }
+    }
+  ]
+}

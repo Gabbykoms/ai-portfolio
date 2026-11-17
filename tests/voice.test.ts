@@ -4,7 +4,7 @@ import { voiceTurn, spokenText } from '../lib/voice';
 test('voice uses the shared answer, reports costs, and stops on empty transcription',async()=>{
   const operations:string[]=[];
   const bridge=async(operation:string)=>{operations.push(operation); return operation==='transcribe'?{text:'What did Gabriel build?',empty:false,cost:0.001}:{audio:'abc',mime:'audio/mpeg',cost:null};};
-  const result=await voiceTurn(Buffer.from('test'),bridge,async(q:string)=>({answer:'A C++ project.',cost:0.002,model:'test'}));
+  const result=await voiceTurn(Buffer.from('test'),bridge,async(q:string)=>({answer:'A C++ project.',cost:0.002,model:'test',trace:[],steps:1,stoppedBy:'answer' as const,pending:[],check:{supported:true,unsupported:[]}}));
   assert.deepEqual(operations,['validate','transcribe','speak']);
   assert.equal(result.costs.total,null);
   assert.equal(result.answer,'A C++ project.');

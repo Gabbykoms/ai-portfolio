@@ -1,5 +1,55 @@
 # Portfolio implementation plan
 
+## Week 8
+
+Status: implementation authorized in chat; detailed plan review pending.
+Approved by: not yet recorded.
+
+### Order of work
+
+1. Tests first for tools/recent-commits.ts: schema validation, repository policy,
+   normalized successful results, HTTP/network/response errors. Run red, then green.
+2. Tests first for tools/loop.ts and tools/check.ts: scripted single call, bad
+   arguments, unknown tool, endless caller, held side effect, unsupported claim.
+   Keep registration/dispatch separate from model transport. Test parallel calls,
+   malformed JSON, missing costs and the maximum tool calls per reply too.
+3. Integrate through lib/chat.ts and lib/voice.ts. Preserve existing error handling,
+   add a total deadline, return traces from both routes, and prevent flagged prose
+   from being spoken. Run existing tests, type checking, and production build.
+4. Add tools/eval.ts and tools/CHECKS.md. Verify model support and prices before paid
+   execution. Questions cover recent commits, a nonexistent owner repository, a
+   profile-only answer, an invitation to invent yesterday's work, and two repo calls.
+5. Record findings and remaining human review; submission tagging/publishing follows
+   completion of the evidence, not just passing mocked tests.
+
+### Risks and concrete decisions
+
+- Wrong argument name: return `{error:{code:"invalid_arguments",message:...}}` as
+  JSON in a tool message with the original ID. Assert no handler ran and that the
+  scripted model receives the error and can correct its next request.
+- Repeated requests: stop after four model calls and return the program's cap
+  sentence. Bound calls within a reply so a step cap also bounds GitHub traffic.
+- Invented commits after a 404: tools/check.ts must reject commit identifiers absent
+  from successful results. An invented prose description with no identifier may
+  evade this check; document that limit rather than claiming semantic verification.
+- Recent results cover a sample on the default branch. Do not infer total history,
+  lack of work yesterday, personal authorship, or deployed behavior from that sample.
+- Use public requests without a token to avoid accidentally retrieving private data.
+  Rate limits are recoverable tool errors. Unknown cost is never silently zero.
+
+### Proof
+
+No-key tests ($0): mocked GitHub proves validation and error boundaries; scripted
+model tests prove the six required misuse behaviors, matching call IDs, caps,
+pending effects and claim flags. Integration tests prove both routes share the loop
+and preserve trace/cost. These tests do not establish real model grounding.
+
+Billed eval: five questions times two verified models, up to four model calls per
+question. Record tools, steps, code checks, latency and actual usage cost; aggregate
+cost per question with and without tools and maximum steps. Monetary estimate is
+pending catalog verification; the lab's estimate is not a measured project cost.
+Run ruff for Python and TypeScript type checking for new tools, recording findings.
+
 Status: working plan; Gabriel authorized planning and starting implementation in chat. Detailed plan approval has not been recorded.
 
 ## Foundation: Gabriel's actual portfolio
@@ -48,3 +98,22 @@ Approved intent/spec/plan; curated profile; passing no-key checks; lint results;
 ### Voice implementation progress
 
 Implemented SDK adapters, evaluation CLIs, Node/Python bridge, `/api/voice`, WAV validation, local recorder conversion, upload fallback, playback, transcript display and separate costs. No-key SDK and bridge tests pass, as do type checking and build. Live provider evaluation and human artifacts remain outstanding. Speech costs remain unknown until the generation record exists; a verified catalog-based estimate is still needed for the billed evaluation budget.
+
+### Week 8 implementation progress
+
+- Step 1: public GitHub adapter and six mocked adapter tests implemented.
+- Step 2: `tools/loop.ts`, `tools/check.ts`, and 13 scripted-model/checker tests
+  implemented. All 32 project tests and TypeScript checking pass. Red/green output
+  is recorded in the session and tools/CHECKS.md; no staged approval or commit
+  history is implied.
+- Step 3: shared chat and voice integration implemented, with mocked integration
+  tests proving tool-result delivery, accumulated costs, trace forwarding and safe
+  speech on unsupported claims. All 34 tests, type checking and production build pass.
+- Next: verify models and run the separately billed evaluation. Document review
+  remains pending.
+
+- Step 4: approved ten-question billed evaluation completed; original checks 8/10.
+  Reviewed failures, truncated passing answer, and reconciled measured costs in
+  tools/CHECKS.md and the saved audit. No deployment model change. Remaining work:
+  address output-budget/format limitations, human document review, and submission
+  commits/tag/push. Original results retained rather than silently rerun.

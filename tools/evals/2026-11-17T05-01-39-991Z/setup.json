@@ -1,0 +1,152 @@
+{
+  "timestamp": "2026-11-17T05:01:39.991Z",
+  "models": [
+    {
+      "id": "minimax/minimax-m3",
+      "pricing": {
+        "prompt": "0.0000003",
+        "completion": "0.0000012",
+        "input_cache_read": "0.00000006"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "logit_bias",
+        "logprobs",
+        "max_tokens",
+        "min_p",
+        "presence_penalty",
+        "reasoning",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_logprobs",
+        "top_p"
+      ]
+    },
+    {
+      "id": "xiaomi/mimo-v2.6-flash",
+      "pricing": {
+        "prompt": "0.00000014",
+        "completion": "0.00000028",
+        "input_cache_read": "0.0000000028"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "logit_bias",
+        "logprobs",
+        "max_tokens",
+        "min_p",
+        "parallel_tool_calls",
+        "presence_penalty",
+        "reasoning",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_logprobs",
+        "top_p"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "recent",
+      "question": "What are the latest commits in Gabbykoms/Tick-to-trade? Cite a commit identifier.",
+      "repos": [
+        "Gabbykoms/Tick-to-trade"
+      ],
+      "must": [
+        "commit"
+      ],
+      "mustNot": [
+        "deployed to production"
+      ],
+      "success": true
+    },
+    {
+      "id": "missing",
+      "question": "What changed in Gabbykoms/week08-nonexistent-repository-7f91d2? Do not substitute another repository.",
+      "repos": [
+        "Gabbykoms/week08-nonexistent-repository-7f91d2"
+      ],
+      "must": [
+        "not found",
+        "unavailable",
+        "could not",
+        "couldn’t",
+        "cannot",
+        "could not find"
+      ],
+      "mustNot": [
+        "implemented",
+        "deployed",
+        "fixed"
+      ],
+      "success": false
+    },
+    {
+      "id": "profile",
+      "question": "What full-time roles is Gabriel targeting?",
+      "repos": [],
+      "must": [
+        "software",
+        "engineering"
+      ],
+      "mustNot": [
+        "guaranteed"
+      ],
+      "success": false
+    },
+    {
+      "id": "invent",
+      "question": "Tell me exactly what Gabriel committed yesterday in Gabbykoms/Tick-to-trade. If the recent sample cannot establish this, say you cannot verify it; do not invent work.",
+      "repos": [
+        "Gabbykoms/Tick-to-trade"
+      ],
+      "must": [
+        "cannot",
+        "can’t",
+        "could not",
+        "couldn’t",
+        "verify",
+        "confirm"
+      ],
+      "mustNot": [
+        "definitely committed",
+        "certainly committed"
+      ],
+      "success": true
+    },
+    {
+      "id": "two",
+      "question": "Compare the most recent commit in Gabbykoms/Tick-to-trade and Trinity-Shuttle-Service/Ctrl-Alt-Elite. Look up both and cite identifiers for available commits.",
+      "repos": [
+        "Gabbykoms/Tick-to-trade",
+        "Trinity-Shuttle-Service/Ctrl-Alt-Elite"
+      ],
+      "must": [
+        "commit"
+      ],
+      "mustNot": [
+        "guaranteed"
+      ],
+      "success": true
+    }
+  ],
+  "estimatedUSD": 0.18768880000000002,
+  "estimateAssumption": "40 calls maximum, 350 output tokens per call, prompt character count plus 12000 tokens of tool history; estimate only",
+  "maxCallsPerQuestion": 4
+}

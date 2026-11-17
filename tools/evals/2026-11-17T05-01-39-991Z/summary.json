@@ -1,0 +1,8 @@
+{
+  "directory": "tools/evals/2026-11-17T05-01-39-991Z",
+  "passed": 8,
+  "total": 10,
+  "costWithTool": 0.0007510794285714285,
+  "costWithoutTool": 0.000235498,
+  "maxSteps": 2
+}

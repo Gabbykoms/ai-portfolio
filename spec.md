@@ -1,5 +1,57 @@
 # AI-enabled portfolio specification
 
+## Week 8: one tool
+
+Working design following Gabriel's selection of `recent_commits` and authorization
+to start. Detailed approval remains pending; no human approval is inferred.
+
+Use TypeScript under `tools/` to integrate with the existing Next.js answer function.
+Reuse native fetch, Ajv for JSON Schema validation, and Node's test runner with tsx;
+no new dependencies. Python remains the voice adapter language.
+
+Model candidates from the course materials: class default `minimax/minimax-m3` and
+comparison `xiaomi/mimo-v2.6-flash`. These are provisional until Gabriel confirms the
+class choice and the live catalog verifies tool support. Retain explicit CHAT_MODEL
+configuration. Do not infer model availability or pricing from course examples.
+
+1. Advertise `recent_commits`: use it before claims about recent repository activity.
+   Arguments are an object with required string `repo` in owner/name form and optional
+   integer `count` from 1 to 10 (default 5); reject additional properties.
+2. Accept repositories owned by `Gabbykoms` and the profile's shared project
+   `Trinity-Shuttle-Service/Ctrl-Alt-Elite`, case-insensitively. Missing repositories
+   under that owner still reach GitHub so not-found behavior is real. Reject other
+   owners, URLs, and path traversal. Use public unauthenticated requests only.
+3. Parse JSON and validate against the advertised schema before calling a handler.
+   Return structured errors with actionable messages, including unknown tool names.
+   No network request occurs for invalid arguments.
+4. Fetch up to ten default-branch commits with a ten-second timeout. Return repository,
+   full SHA, UTC author date, bounded first-line subject, GitHub author login or null,
+   and a constructed commit URL. Do not expose email addresses or raw provider errors.
+   Convert 404, access/rate-limit failures, malformed responses and network errors to
+   tool results. A 404 means unavailable publicly, not proof the repository never existed.
+5. Preserve assistant tool requests and return one tool message per request using its
+   tool_call_id. Handle multiple calls in one reply. Limit each reply to four tool
+   executions and the question to four model calls; a cap returns the program's sentence
+   `I couldn't finish answering that in 4 steps.` Bound total elapsed time as well.
+6. A registered side-effect handler is never invoked without explicit confirmation
+   outside model arguments. Unconfirmed calls are pending. Production registers only
+   the read-only tool; tests inject a side-effect handler.
+7. Check commit SHAs and commit URLs in final answers against successful results.
+   Flag unsupported identifiers; substitute a safe answer before voice synthesis.
+   Profile repository mentions remain valid without a tool. This does not establish
+   arbitrary prose truth or infer personal authorship from repository membership.
+8. Typed and voice paths use answerQuestion and return trace, steps, stop reason,
+   pending requests and claim-check status alongside the answer. Treat commit text
+   as untrusted data. Preserve profile grounding for all other factual claims.
+9. Sum usage cost across model calls; if any cost is missing or invalid, total cost
+   is null. A tool round normally needs another model call to consume the result;
+   multiple tools can share that follow-up. Record cost and latency per eval question.
+10. No-key tests use injected scripted clients and fetchers. Billed eval is separate:
+    five questions on two verified models, skipped without a key. Record failures and
+    checker limitations, not only passes, in tools/CHECKS.md.
+
+API reference: https://docs.github.com/en/rest/commits/commits#list-commits
+
 Date: October 5, 2026  
 Status: Draft for review. Includes Gabriel's confirmed “not yet” inventory.
 

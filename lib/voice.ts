@@ -31,5 +31,5 @@ export async function voiceTurn(audio:Buffer, bridge=runAudio, answer=answerQues
   const speech=await bridge('speak',{text});
   const costs={transcription:transcription.cost ?? null,answer:reply.cost,speech:speech.cost ?? null,total:null as number|null};
   if([costs.transcription,costs.answer,costs.speech].every(c=>typeof c==='number'))costs.total=costs.transcription+costs.answer+costs.speech;
-  return {transcript:transcription.text,answer:text,audio:speech.audio,mime:speech.mime,costs,transcription,speech:{...speech,audio:undefined}};
+  return {trace:reply.trace,steps:reply.steps,stoppedBy:reply.stoppedBy,pending:reply.pending,check:reply.check,model:reply.model,transcript:transcription.text,answer:text,audio:speech.audio,mime:speech.mime,costs,transcription,speech:{...speech,audio:undefined}};
 }
