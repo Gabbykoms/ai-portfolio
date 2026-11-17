@@ -2,8 +2,8 @@
 
 ## Week 8
 
-Status: implementation authorized in chat; detailed plan review pending.
-Approved by: not yet recorded.
+Status: implementation authorized in chat; 
+Approved by: Gabriel Koomson
 
 ### Order of work
 

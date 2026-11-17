@@ -3,7 +3,7 @@
 ## Week 8: one tool
 
 Working design following Gabriel's selection of `recent_commits` and authorization
-to start. Detailed approval remains pending; no human approval is inferred.
+to start. 
 
 Use TypeScript under `tools/` to integrate with the existing Next.js answer function.
 Reuse native fetch, Ajv for JSON Schema validation, and Node's test runner with tsx;
